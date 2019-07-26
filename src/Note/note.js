@@ -12,7 +12,10 @@ export default function Note(props) {
                 </Link>
             </h2>
 
-            <button className="Note_delete" type="button">
+            <button 
+                className="Note_delete" 
+                type="button"
+            >
                 remove
             </button>
 
