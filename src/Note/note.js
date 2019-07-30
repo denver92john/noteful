@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import NotefulContext from '../NotefulContext';
 import config from '../config';
+import PropTypes from 'prop-types';
 import './note.css';
 
 /*
@@ -39,6 +40,9 @@ export default function Note(props) {
 class Note extends React.Component {
     static defaultProps = {
         onDeleteNote: () => {},
+        name: "",
+        id: "",
+        modified: ""
     };
 
     static contextType = NotefulContext;
@@ -98,6 +102,12 @@ class Note extends React.Component {
             </div>            
         );
     }
+}
+
+Note.propTypes = {
+    id: PropTypes.string,
+    modified: PropTypes.string,
+    name: PropTypes.string.isRequired
 }
 
 export default Note;

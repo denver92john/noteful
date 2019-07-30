@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import CircleButton from '../CircleButton/circleButton';
 import NotefulContext from '../NotefulContext';
 import { countNotesForFolder } from '../notes-helpers';
+import PropTypes from 'prop-types';
 import './noteListNav.css';
 
 /*
@@ -48,7 +49,7 @@ export default class NoteListNav extends React.Component {
     static contextType = NotefulContext;
 
     render() {
-        const {folders=[], notes=[]} = this.context;
+        const {folders, notes} = this.context;
         return (
             <div className="NoteListNav">
                 <ul className="NoteListNav_list">
@@ -80,3 +81,22 @@ export default class NoteListNav extends React.Component {
         );
     }
 }
+
+NoteListNav.defaultProps = {
+    folders: [],
+    notes: [],
+};
+
+NoteListNav.propTypes = {
+    folders: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string.isRequired
+    })),
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        content: PropTypes.string,
+        folderId: PropTypes.string,
+        id: PropTypes.string,
+        modified: PropTypes.string,
+        name: PropTypes.string.isRequired
+    }))
+};

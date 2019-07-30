@@ -2,6 +2,7 @@ import React from 'react';
 import CircleButton from '../CircleButton/circleButton';
 import NotefulContext from '../NotefulContext';
 import {findNote, findFolder} from '../notes-helpers';
+import PropTypes from 'prop-types';
 import './notePageNav.css';
 
 /*
@@ -39,7 +40,9 @@ export default class NotePageNav extends React.Component {
         },
         match: {
             params: {}
-        }
+        },
+        folders: [],
+        notes: []
     }
 
     static contextType = NotefulContext;
@@ -68,3 +71,17 @@ export default class NotePageNav extends React.Component {
         );
     }
 }
+
+NotePageNav.propTypes = {
+    folders: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string.isRequired
+    })),
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        content: PropTypes.string,
+        folderId: PropTypes.string,
+        id: PropTypes.string,
+        modified: PropTypes.string,
+        name: PropTypes.string.isRequired
+    }))
+};

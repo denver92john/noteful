@@ -2,6 +2,7 @@ import React from 'react';
 import Note from '../Note/note';
 import NotefulContext from '../NotefulContext';
 import {findNote} from '../notes-helpers';
+import PropTypes from 'prop-types';
 import './notePageMain.css';
 
 /*
@@ -34,7 +35,8 @@ export default class NotePageMain extends React.Component {
     static defaultProps = {
         match: {
             params: {}
-        }
+        },
+        notes: []
     }
 
     static contextType = NotefulContext;
@@ -44,7 +46,7 @@ export default class NotePageMain extends React.Component {
     }
 
     render() {
-        const {notes=[]} = this.context;
+        const {notes} = this.context;
         const {noteId} = this.props.match.params;
         const note = findNote(notes, noteId) || {context: ''}
 
@@ -65,3 +67,17 @@ export default class NotePageMain extends React.Component {
         );
     }
 }
+
+NotePageMain.propTypes = {
+    folders: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string.isRequired
+    })),
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        content: PropTypes.string,
+        folderId: PropTypes.string,
+        id: PropTypes.string,
+        modified: PropTypes.string,
+        name: PropTypes.string.isRequired
+    }))
+};

@@ -4,9 +4,12 @@ import NoteListNav from './NoteListNav/noteListNav';
 import NotePageNav from './NotePageNav/notePageNav';
 import NoteListMain from './NoteListMain/noteListMain';
 import NotePageMain from './NotePageMain/notePageMain';
+import AddFolder from './AddFolder/AddFolder';
+import AddNote from './AddNote/AddNote';
 import config from './config';
 import './App.css';
 import NotefulContext from './NotefulContext';
+import ErrorBoundary from './ErrorBoundary';
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +45,18 @@ class App extends Component {
         console.log(`error is: ${error}`);
       });
     
+  }
+
+  handleAddNote = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
+  }
+
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    })
   }
 
   handleDeleteNote = noteId => {
@@ -153,6 +168,8 @@ class App extends Component {
           />
         ))}
         <Route path="/note/:noteId" component={NotePageMain} />
+        <Route path="/add-folder" component={AddFolder} />
+        <Route path="/add-note" component={AddNote} />
       </>
     );
   }
@@ -161,19 +178,29 @@ class App extends Component {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addNote: this.handleAddNote,
+      addFolder: this.handleAddFolder,
     }
 
     return (
       <NotefulContext.Provider value={contextValue}>
         <div className="App">
-          <nav className="App_nav">{this.renderNavRoutes()}</nav>
+          <nav className="App_nav">
+            <ErrorBoundary>
+              {this.renderNavRoutes()}
+            </ErrorBoundary>
+          </nav>
           <header className="App_header">
             <h1>
               <Link to="/">Noteful</Link>
             </h1>
           </header>
-          <main className="App_main">{this.renderMainRoutes()}</main>
+          <main className="App_main">
+            <ErrorBoundary>
+              {this.renderMainRoutes()}
+            </ErrorBoundary>
+          </main>
         </div>
       </NotefulContext.Provider>
     );
