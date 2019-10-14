@@ -54,8 +54,11 @@ export default class NoteListMain extends React.Component {
 
     render() {
         const {folderId} = this.props.match.params;
+        //console.log(folderId);
         const {notes} = this.context;
+        //console.log(notes);
         const notesForFolder = getNotesForFolder(notes, folderId);
+        //console.log(getNotesForFolder(notes, 1));
         return (
             <section className="NoteListMain">
                 <ul>
@@ -86,13 +89,13 @@ export default class NoteListMain extends React.Component {
 
 NoteListMain.propTypes = {
     folders: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.number,
         name: PropTypes.string.isRequired
     })),
     notes: PropTypes.arrayOf(PropTypes.shape({
         content: PropTypes.string,
-        folderId: PropTypes.string,
-        id: PropTypes.string,
+        folderId: PropTypes.number,
+        id: PropTypes.number,
         modified: PropTypes.string,
         name: PropTypes.string.isRequired
     }))

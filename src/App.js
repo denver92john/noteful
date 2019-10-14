@@ -63,40 +63,7 @@ class App extends Component {
     this.setState({
       notes: this.state.notes.filter(note => note.id !== noteId)
     });
-  }  
-
-  /*
-  renderNavRoutes() {
-    const {notes, folders} = this.state;
-    return (
-      <>
-        {['/', '/folder/:folderId'].map(path => (
-          <Route 
-            exact path={path}
-            key={path}
-            render={routeProps => (
-              <NoteListNav 
-                folders={folders}
-                notes={notes}
-                {...routeProps}
-              />
-            )}
-          />
-        ))}
-
-        <Route 
-          path="/note/:noteId"
-          render={routeProps => {
-            const {noteId} = routeProps.match.params;
-            const note = findNote(notes, noteId) || {};
-            const folder = findFolder(folders, note.folderId);
-            return <NotePageNav {...routeProps} folder={folder} />
-          }}
-        />
-      </>
-    );
   }
-  */
 
   renderNavRoutes() {
     return (
@@ -116,45 +83,6 @@ class App extends Component {
       </>
     );
   }
-
-  /*
-  renderMainRoutes() {
-    const {notes, folders} = this.state;
-    
-    return (
-      <>
-        {['/', '/folder/:folderId'].map(path => (
-          <Route 
-            exact path={path}
-            key={path}
-            render={routeProps => {
-              const {folderId} = routeProps.match.params;
-              const notesForFolder = getNotesForFolder(
-                notes,
-                folderId
-              );
-              return (
-                <NoteListMain 
-                  {...routeProps}
-                  notes={notesForFolder}
-                />
-              );
-            }}
-          />
-        ))}
-
-        <Route 
-          path="/note/:noteId"
-          render={routeProps => {
-            const {noteId} = routeProps.match.params;
-            const note = findNote(notes, noteId);
-            return <NotePageMain {...routeProps} note={note} />
-          }}
-        />
-      </>
-    );
-  }
-  */
 
   renderMainRoutes() {
     return (

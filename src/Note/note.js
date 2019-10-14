@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import NotefulContext from '../NotefulContext';
 import config from '../config';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './note.css';
 
 /*
@@ -74,6 +74,7 @@ class Note extends React.Component {
 
     render() {
         const {name, id, modified} = this.props;
+        console.log(name, id, modified);
         return (
             <div className="Note">
                 <h2 className="Note_title">
@@ -103,11 +104,11 @@ class Note extends React.Component {
         );
     }
 }
-
+/* 
 Note.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     modified: PropTypes.string,
     name: PropTypes.string.isRequired
-}
+}*/
 
 export default Note;

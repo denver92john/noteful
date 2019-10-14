@@ -2,7 +2,7 @@ import React from 'react';
 import Note from '../Note/note';
 import NotefulContext from '../NotefulContext';
 import {findNote} from '../notes-helpers';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './notePageMain.css';
 
 /*
@@ -67,17 +67,17 @@ export default class NotePageMain extends React.Component {
         );
     }
 }
-
+/* 
 NotePageMain.propTypes = {
     folders: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.number,
         name: PropTypes.string.isRequired
     })),
     notes: PropTypes.arrayOf(PropTypes.shape({
         content: PropTypes.string,
-        folderId: PropTypes.string,
-        id: PropTypes.string,
+        folderId: PropTypes.number,
+        id: PropTypes.number,
         modified: PropTypes.string,
         name: PropTypes.string.isRequired
     }))
-};
+};*/
