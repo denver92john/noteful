@@ -2,34 +2,8 @@ import React from 'react';
 import Note from '../Note/note';
 import NotefulContext from '../NotefulContext';
 import {findNote} from '../notes-helpers';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './notePageMain.css';
-
-/*
-export default function NotePageMain(props) {
-    return (
-        <section className="NotePageMain">
-            <Note 
-                id={props.note.name}
-                name={props.note.name}
-                modified={props.note.modified}
-            />
-
-            <div className="NotePageMain_content">
-                {props.note.content.split(/\n \r|\n/).map((para, i) =>
-                    <p key={i}>{para}</p>
-                )}
-            </div>
-        </section>
-    );
-}
-
-NotePageMain.defaultProps = {
-    note: {
-        content: ''
-    }
-}
-*/
 
 export default class NotePageMain extends React.Component {
     static defaultProps = {
@@ -67,7 +41,7 @@ export default class NotePageMain extends React.Component {
         );
     }
 }
-/* 
+
 NotePageMain.propTypes = {
     folders: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
@@ -80,4 +54,4 @@ NotePageMain.propTypes = {
         modified: PropTypes.string,
         name: PropTypes.string.isRequired
     }))
-};*/
+};

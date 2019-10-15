@@ -2,36 +2,8 @@ import React from 'react';
 import CircleButton from '../CircleButton/circleButton';
 import NotefulContext from '../NotefulContext';
 import {findNote, findFolder} from '../notes-helpers';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './notePageNav.css';
-
-/*
-export default function NotePageNav(props) {
-    return (
-        <div className="NotePageNav">
-            <CircleButton
-                tag="button"
-                role="link"
-                onClick={() => props.history.goBack()}
-                className="NotePageNav_back-button"
-            >
-                Back
-            </CircleButton>
-            {props.folder && (
-                <h3 className="NotePageNav_folder-name">
-                    {props.folder.name}
-                </h3>
-            )}
-        </div>
-    );
-}
-
-NotePageNav.defaultProps = {
-    history: {
-        goBack: () => {}
-    }
-}
-*/
 
 export default class NotePageNav extends React.Component {
     static defaultProps = {
@@ -71,7 +43,7 @@ export default class NotePageNav extends React.Component {
         );
     }
 }
-/* 
+
 NotePageNav.propTypes = {
     folders: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
@@ -84,4 +56,4 @@ NotePageNav.propTypes = {
         modified: PropTypes.string,
         name: PropTypes.string.isRequired
     }))
-};*/
+};
