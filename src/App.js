@@ -42,7 +42,7 @@ class App extends Component {
         this.setState({notes, folders});
       })
       .catch(error => {
-        console.log(`error is: ${error}`);
+        console.log(error);
       });
     
   }
