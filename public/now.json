@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "adkins1393-noteful",
+    "name": "noteful",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
