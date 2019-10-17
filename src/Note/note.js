@@ -30,12 +30,11 @@ class Note extends React.Component {
             if (!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
-            return res.json();
+            return res;
         })
         .then(() => {
-            this.context.deleteNote(noteId)
             this.props.onDeleteNote(noteId)
-            this.props.history.push(`/`);
+            this.context.deleteNote(noteId)
         })
         .catch(error => {
             console.log({error})

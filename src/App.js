@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(`componentDidMount is running`);
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
       fetch(`${config.API_ENDPOINT}/folders`)
@@ -33,7 +32,6 @@ class App extends Component {
         }
         if (!foldersRes.ok) {
           console.log(`foldersRes isn't working`);
-          //throw new Error(foldersRes.statusText);
           return foldersRes.json().then(e => Promise.reject(e));
         }
         return Promise.all([notesRes.json(), foldersRes.json()]);
